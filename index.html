@@ -52,21 +52,24 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Distilled 3DGS</h1>
+            <h1 class="title is-1 publication-title">Distilled 3D Gaussian Splatting</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
                 <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Lintao Xiang</a><sup>*1</sup>,</span>
                 <span class="author-block">
                   <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Xinkai Chen</a><sup>*2</sup>,</span>
+                <span class="author-block">
+                  <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Jianhuang Lai</a><sup>*3</sup>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Guangcong Wang</a><sup>2</sup>
+                    <a href="FOURTH AUTHOR PERSONAL LINK" target="_blank">Guangcong Wang</a><sup>#2</sup>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup>The University of Manchester, <sup>2</sup>Great Bay University<br>Arxiv 2025</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="author-block"><sup>1</sup>The University of Manchester, <sup>2</sup>Great Bay University, <sup>3</sup>Sun Yat-Sen University<br>Arxiv 2025</span>
+                    <span class="eql-cntrb"><small><br><sup>* </sup>Indicates Equal Contribution</small></span>
+                    <span class="eql-cntrb"><small><br><sup># </sup>Indicates Corresponding Author</small></span>
                   </div>
 
                   <div class="column has-text-centered">
@@ -150,6 +153,9 @@
           <p>
             3D Gaussian Splatting (3DGS) has exhibited remarkable efficacy in novel view synthesis (NVS). However, it suffers from a significant drawback: achieving high-fidelity rendering typically necessitates a large number of 3D Gaussians, resulting in substantial memory consumption and storage requirements. To address this challenge, we propose the first knowledge distillation framework for 3DGS, featuring various teacher models, including vanilla 3DGS, noise-augmented variants, and dropout-regularized versions.  The outputs of these teachers are aggregated to guide the optimization of a lightweight student model. To distill the hidden geometric structure, we propose a structural similarity loss to boost the consistency of spatial geometric distributions between the student and teacher model. Through comprehensive quantitative and qualitative evaluations across diverse datasets, the proposed Distilled-3DGS—a simple yet effective framework without bells and whistles—achieves promising rendering results in both rendering quality and storage efficiency compared to state-of-the-art methods. The code will be publicly available.
           </p>
+          <p>
+            TL;DR: We distill large teacher 3DGS models' knowledge to small student 3DGS model.
+          </p>
         </div>
       </div>
     </div>
@@ -185,38 +191,46 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
+      <h2 class="title is-3 has-text-centered" 
+          style="margin-top: 3rem; margin-bottom: 1.5 !important;">
+        Motivation
+      </h2>
+
+      <div class="is-flex is-justify-content-center">
+        <div>
+          <img src="static/images/teaser.jpg" style="width: 110%; max-width: 1200px; height: auto;">
+        </div>
+      </div>
+
+      <!-- 整体说明 -->
+      <div class="content has-text-left" style="max-width:1080px; margin:1.5rem auto 0; text-align:left;">
+        <p>
+          3DGS necessitates a large number of 3D Gaussians to ensure high-fidelity image rendering, particularly in the presence of complex scenes. This limits their applicability on platforms and devices with constrained computational resources and limited memory capacity.
+        </p>
+      </div>
+
       <!-- 1. 视频 Demo -->
-      <h2 class="title is-3 has-text-centered">Demo</h2>
+      <h2 class="title is-3 has-text-centered" style="margin-top: 3rem; margin-bottom: 1.5 !important;">Demo</h2>
       <div class="is-flex is-justify-content-center">
         <video controls width="960">
-          <source src="static/videos/Distilled3DGS.mp4" type="video/mp4">
+          <source src="static/videos/DEMOv6.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
 
       <!-- 2. 非滚动图 Method -->
-      <!-- Method -->
-      <h2 class="title is-3 has-text-centered" style="margin-top:3rem;">Method</h2>
-
-      <!-- 等高并排图 -->
-      <div class="is-flex is-justify-content-center" style="gap:1.5rem;">
-        <!-- 左侧图 -->
-        <div class="is-flex is-flex-direction-column" style="width:340px;">
-          <img src="static/images/pipeline.jpg"
-              style="height:220px; width:100%; object-fit:contain;">
-          <p class="subtitle has-text-centered" style="margin-top:0.5rem;">Pipeline</p>
-        </div>
-
-        <!-- 右侧图 -->
-        <div class="is-flex is-flex-direction-column" style="width:340px;">
-          <img src="static/images/voxel.jpg"
-              style="height:220px; width:100%; object-fit:contain;">
-          <p class="subtitle has-text-centered" style="margin-top:0.5rem;">Structure</p>
+      <h2 class="title is-3 has-text-centered" 
+          style="margin-top: 3rem; margin-bottom: 1.5 !important;">
+        Method
+      </h2>
+      <div class="is-flex is-justify-content-center">
+        <div>
+          <img src="static/images/Method.png">
         </div>
       </div>
 
       <!-- 整体说明 -->
-      <div class="content has-text-left" style="max-width:720px; margin:1.5rem auto 0; text-align:left;">
+      <div class="content has-text-left" style="max-width:1080px; margin:1.5rem auto 0; text-align:left;">
         <p>
           Multi-teacher knowledge distillation framework consists of two stages. First, a standard teacher model G<sub>std</sub> is trained, along with two variants: G<sub>perb</sub> with random perturbation and G<sub>drop</sub> with random dropout. Then, a pruned student model G<sub>std</sub> is supervised by the outputs of these teachers. Additionally, a spatial distribution distillation strategy is introduced to help the student learn structural patterns from the teachers.
         </p>
