@@ -130,6 +130,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
+      <p>
+        TL;DR: We distill large teacher 3DGS models' knowledge to small student 3DGS model.
+      </p>
       <video poster="" id="tree" autoplay controls muted loop height="100%">
         <!-- Your video here -->
         <source src="static/videos/Bicycle_Comparison.mp4"
@@ -152,9 +155,6 @@
         <div class="content has-text-justified">
           <p>
             3D Gaussian Splatting (3DGS) has exhibited remarkable efficacy in novel view synthesis (NVS). However, it suffers from a significant drawback: achieving high-fidelity rendering typically necessitates a large number of 3D Gaussians, resulting in substantial memory consumption and storage requirements. To address this challenge, we propose the first knowledge distillation framework for 3DGS, featuring various teacher models, including vanilla 3DGS, noise-augmented variants, and dropout-regularized versions.  The outputs of these teachers are aggregated to guide the optimization of a lightweight student model. To distill the hidden geometric structure, we propose a structural similarity loss to boost the consistency of spatial geometric distributions between the student and teacher model. Through comprehensive quantitative and qualitative evaluations across diverse datasets, the proposed Distilled-3DGS—a simple yet effective framework without bells and whistles—achieves promising rendering results in both rendering quality and storage efficiency compared to state-of-the-art methods. The code will be publicly available.
-          </p>
-          <p>
-            TL;DR: We distill large teacher 3DGS models' knowledge to small student 3DGS model.
           </p>
         </div>
       </div>
