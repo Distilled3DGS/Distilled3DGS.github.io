@@ -130,7 +130,9 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <p>
-        TL;DR: We distill large teacher 3DGS models' knowledge to small student 3DGS model.
+        <b>TL;DR:</b> We distill large teacher 3DGS models' knowledge to small student 3DGS model. 
+        On average, our model requires only 12% of the Gaussians used in the original 3DGS 
+        to reconstruct scenes while achieving rendering quality comparable to or surpassing SOTA baselines.
       </p>
       <video poster="" id="tree" autoplay controls muted loop height="100%">
         <!-- Your video here -->
@@ -202,7 +204,11 @@
       <!-- 说明 -->
       <div class="content has-text-left" style="max-width:960px; margin:1.5rem auto 0; text-align:left;">
         <p>
-          3DGS necessitates a large number of 3D Gaussians to ensure high-fidelity image rendering, particularly in the presence of complex scenes. This limits their applicability on platforms and devices with constrained computational resources and limited memory capacity.
+          3DGS necessitates a large number of 3D Gaussians to ensure high-fidelity image rendering, particularly 
+          in the presence of complex scenes. This limits their applicability on platforms and devices with constrained 
+          computational resources and limited memory capacity. On the other hand, knowledge distillation has proven 
+          highly effective for model compression. We employ it to transfer knowledge from a teacher model with more 
+          Gaussians to a student model with fewer Gaussians, thereby reducing the total number of Gaussians in the scene representation.
         </p>
       </div>
 
