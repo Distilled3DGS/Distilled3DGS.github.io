@@ -130,8 +130,8 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <p>
-        <b>TL;DR:</b> We distill large teacher 3DGS models' knowledge to a small student 3DGS model. 
-        On average, our model requires only 12% of the Gaussians used in the original 3DGS 
+        <b>TL;DR:</b> Our Distilled-3DGS distill large teacher 3DGS models' knowledge to a small student 3DGS model. 
+        On average, Distilled-3DGS requires only 12% of the Gaussians used in the original 3DGS 
         to reconstruct scenes while achieving rendering quality comparable to or surpassing SOTA baselines.
       </p>
       <video poster="" id="tree" autoplay controls muted loop height="100%">
@@ -159,7 +159,7 @@
             However, it suffers from a significant drawback: achieving high-fidelity rendering typically 
             necessitates a large number of 3D Gaussians, resulting in substantial memory consumption and 
             storage requirements. To address this challenge, we propose the first knowledge distillation 
-            framework for 3DGS, featuring various teacher models, including vanilla 3DGS, noise-augmented 
+            framework, Distilled-3DGS, for 3DGS, featuring various teacher models, including vanilla 3DGS, noise-augmented 
             variants, and dropout-regularized versions.  The outputs of these teachers are aggregated to 
             guide the optimization of a lightweight student model. To distill the hidden geometric structure, 
             we propose a structural similarity loss to boost the consistency of spatial geometric distributions 
@@ -244,7 +244,7 @@
       <!-- 整体说明 -->
       <div class="content has-text-left" style="max-width:960px; margin:1.5rem auto 0; text-align:left;">
         <p>
-          Multi-teacher knowledge distillation framework consists of two stages. First, a standard teacher model G<sub>std</sub> is trained, along with two variants: G<sub>perb</sub> with random perturbation and G<sub>drop</sub> with random dropout. Then, a pruned student model G<sub>std</sub> is supervised by the outputs of these teachers. Additionally, a spatial distribution distillation strategy is introduced to help the student learn structural patterns from the teachers.
+          Multi-teacher knowledge distillation framework of Distilled-3DGS consists of two stages. First, a standard teacher model G<sub>std</sub> is trained, along with two variants: G<sub>perb</sub> with random perturbation and G<sub>drop</sub> with random dropout. Then, a pruned student model G<sub>std</sub> is supervised by the outputs of these teachers. Additionally, a spatial distribution distillation strategy is introduced to help the student learn structural patterns from the teachers.
         </p>
       </div>
 
@@ -292,7 +292,9 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            The computational resources are supported by SongShan Lake HPC Center (SSL-HPC) in Great Bay University. This work was also supported by Guangdong Research Team for Communication and Sensing Integrated with Intelligent Computing (Project No. 2024KCXTD047).
+            The computational resources are supported by SongShan Lake HPC Center (SSL-HPC) in Great Bay University. 
+            This work was also supported by Guangdong Research Team for Communication and Sensing Integrated with Intelligent Computing 
+            (Project No. 2024KCXTD047).
           </p>
           <p>
             This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
